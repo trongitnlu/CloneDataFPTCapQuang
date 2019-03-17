@@ -11,10 +11,11 @@
     $html = file_get_html($url);
 	
 	// echo $html;
-    $category = $html->find("#wide-nav ul li");
-    // $category = $html->find("#secondary aside");
+    $category = $html->find("#secondary aside");
+    getCategoryRightChildren($category, $connection);
     // echo $category[0];
-    getCategoryRoot($category, $connection);
+   // $category = $html->find("#wide-nav ul li");
+   // getCategoryRoot($category, $connection);
     $connection->close();
 
     function getCategoryRightChildren($category, $connection){
@@ -64,7 +65,7 @@
                 insert($connection, $sql);
                 $id_post = $connection->insert_id;
     
-                $sql = "INSERT INTO category VALUES (NULL, '$name', '$path', '$id_cate', 0, 1, 0, 1, '$href')";
+                $sql = "INSERT INTO category VALUES (NULL, '$name', '$path', '$id_post', '$id_cate', 0, 1, 1, '$href')";
     
                 echo $sql;
                 insert($connection, $sql);
@@ -118,7 +119,7 @@
         }
     }
     function insert( $connection,$query){
-        $result = mysqli_query($connection,$query);
-        echo $result;
+        // $result = mysqli_query($connection,$query);
+        // echo $result;
     }
 ?>
