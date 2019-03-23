@@ -1,7 +1,5 @@
 <?php
-    set_time_limit(0);
     require_once '../connection.php';
-    require "../simple_html_dom.php";
 
     $db = new DB_Connection();
     $connection = $db->get_connection();
